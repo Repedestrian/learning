@@ -1,0 +1,15 @@
+﻿  Contact.c
+D:\系统默认\桌面\C语言\test_5_11\test_5_11\Contact.c(7,72): warning C4133: “=”: 从“PepInfo *”到“PeoInfo *”的类型不兼容
+D:\系统默认\桌面\C语言\test_5_11\test_5_11\Contact.c(60,12): warning C4013: “FindByName”未定义；假设外部返回 int
+D:\系统默认\桌面\C语言\test_5_11\test_5_11\Contact.c(163,36): warning C4028: 形参 1 与声明不同
+D:\系统默认\桌面\C语言\test_5_11\test_5_11\Contact.c(189,33): warning C4028: 形参 1 与声明不同
+D:\系统默认\桌面\C语言\test_5_11\test_5_11\Contact.c(195,11): warning C4098: “Save”:“void”函数返回值
+D:\系统默认\桌面\C语言\test_5_11\test_5_11\Contact.c(209,17): warning C4047: “函数”:“const char *”与“char”的间接级别不同
+D:\系统默认\桌面\C语言\test_5_11\test_5_11\Contact.c(209,16): warning C4024: “strcmp”: 形参和实参 1 的类型不同
+D:\系统默认\桌面\C语言\test_5_11\test_5_11\Contact.c(209,20): warning C4047: “函数”:“const char *”与“char”的间接级别不同
+D:\系统默认\桌面\C语言\test_5_11\test_5_11\Contact.c(209,19): warning C4024: “strcmp”: 形参和实参 2 的类型不同
+D:\系统默认\桌面\C语言\test_5_11\test_5_11\Contact.c(207,1): warning C4047: “初始化”:“char”与“char *”的间接级别不同
+D:\系统默认\桌面\C语言\test_5_11\test_5_11\Contact.c(208,1): warning C4047: “初始化”:“char”与“char *”的间接级别不同
+  test.c
+  正在生成代码...
+  test_5_11.vcxproj -> D:\系统默认\桌面\C语言\test_5_11\x64\Debug\test_5_11.exe
