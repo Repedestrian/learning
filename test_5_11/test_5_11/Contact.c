@@ -17,18 +17,18 @@ void CheckCapacity(struct Contact* ps)
 {
 	if (ps->size == ps->capacity)
 	{
-		//ÔöÈİ
+		//å¢å®¹
 		struct PeoInfo* ptr = realloc(ps->data, (ps->capacity + 2) * sizeof(struct PeoInfo));
 		if (ptr != NULL)
 		{
 			ps->data = ptr;
 			ps->capacity += 2;
-			printf("ÔöÈİ³É¹¦\n");
+			printf("å¢å®¹æˆåŠŸ\n");
 
 		}
 		else
 		{
-			printf("ÔöÈİÊ§°Ü\n");
+			printf("å¢å®¹å¤±è´¥\n");
 		}
 	}
 }
@@ -41,7 +41,7 @@ void Load(struct Contact* ps)
 		printf("LoadContact:%s\n", strerror(errno));
 		return;
 	}
-	//¶ÁÈ¡ÎÄ¼ş
+	//è¯»å–æ–‡ä»¶
 	while (fread(&tmp, sizeof(struct PeoInfo), 1, Pfread))
 	{
 		CheckCapacity(ps);
@@ -52,66 +52,66 @@ void Load(struct Contact* ps)
 void ModifyContact(struct Contact* ps)
 {
 	char name[MAX_NAME];
-	printf("ÇëÊäÈëÒªĞŞ¸ÄµÄÈËµÄÃû×Ö:>");
+	printf("è¯·è¾“å…¥è¦ä¿®æ”¹çš„äººçš„åå­—:>");
 	scanf("%s", name);
-	//²éÕÒÒªÉ¾³ıµÄÈËÔÚÊ²Ã´Î»ÖÃ
-	//ÕÒµ½ÁË·µ»ØÃû×ÖËùÔÚÔªËØµÄÏÂ±ê
-	//ÕÒ²»µ½·µ»Ø -1
+	//æŸ¥æ‰¾è¦åˆ é™¤çš„äººåœ¨ä»€ä¹ˆä½ç½®
+	//æ‰¾åˆ°äº†è¿”å›åå­—æ‰€åœ¨å…ƒç´ çš„ä¸‹æ ‡
+	//æ‰¾ä¸åˆ°è¿”å› -1
 	int pos = FindByName(ps, name);
 	if (pos == -1)
 	{
-		printf("ÒªĞŞ¸ÄµÄÈË²»´æÔÚ\n");
+		printf("è¦ä¿®æ”¹çš„äººä¸å­˜åœ¨\n");
 	}
 	else
 	{
-		printf("%-12s\t%-12s\t%-12s\t%-20s\t%-20s\n", "Ãû×Ö", "ÄêÁä", "ĞÔ±ğ", "µç»°", "µØÖ·");
+		printf("%-12s\t%-12s\t%-12s\t%-20s\t%-20s\n", "åå­—", "å¹´é¾„", "æ€§åˆ«", "ç”µè¯", "åœ°å€");
 		printf("%-12s\t%-12d\t%-12s\t%-20s\t%-20s\n",
 			ps->data[pos].name,
 			ps->data[pos].age,
 			ps->data[pos].sex,
 			ps->data[pos].tele,
 			ps->data[pos].addr);
-		printf("ÇëÊäÈëÃû×Ö:>");
+		printf("è¯·è¾“å…¥åå­—:>");
 		scanf("%s", ps->data[pos].name);
-		printf("ÇëÊäÈëÄêÁä:>");
+		printf("è¯·è¾“å…¥å¹´é¾„:>");
 		scanf("%d", &ps->data[pos].age);
-		printf("ÇëÊäÈëĞÔ±ğ:>");
+		printf("è¯·è¾“å…¥æ€§åˆ«:>");
 		scanf("%s", ps->data[pos].sex);
-		printf("ÇëÊäÈëµç»°:>");
+		printf("è¯·è¾“å…¥ç”µè¯:>");
 		scanf("%s", ps->data[pos].tele);
-		printf("ÇëÊäÈëµØÖ·:>");
+		printf("è¯·è¾“å…¥åœ°å€:>");
 		scanf("%s", ps->data[pos].addr);
-		printf("ĞŞ¸Ä³É¹¦\n");
+		printf("ä¿®æ”¹æˆåŠŸ\n");
 	}
 }
 void AddContact(struct Contact* ps)
 {
-	//¼ì²âµ±Ç°Í¨Ñ¶Â¼µÄÈİÁ¿£¬ÂúÁË¾ÍÔö¼Ó£¬Ã»Âú¾ÍÉ¶¶¼²»¸É
+	//æ£€æµ‹å½“å‰é€šè®¯å½•çš„å®¹é‡ï¼Œæ»¡äº†å°±å¢åŠ ï¼Œæ²¡æ»¡å°±å•¥éƒ½ä¸å¹²
 	CheckCapacity(ps);
-	//Ôö¼ÓÊı¾İ
-		printf("ÇëÊäÈëÃû×Ö:>");
+	//å¢åŠ æ•°æ®
+		printf("è¯·è¾“å…¥åå­—:>");
 		scanf("%s", ps->data[ps->size].name);
-		printf("ÇëÊäÈëÄêÁä:>");
+		printf("è¯·è¾“å…¥å¹´é¾„:>");
 		scanf("%d", &ps->data[ps->size].age);
-		printf("ÇëÊäÈëĞÔ±ğ:>");
+		printf("è¯·è¾“å…¥æ€§åˆ«:>");
 		scanf("%s", ps->data[ps->size].sex);
-		printf("ÇëÊäÈëµç»°:>");
+		printf("è¯·è¾“å…¥ç”µè¯:>");
 		scanf("%s", ps->data[ps->size].tele);
-		printf("ÇëÊäÈëµØÖ·:>");
+		printf("è¯·è¾“å…¥åœ°å€:>");
 		scanf("%s", ps->data[ps->size].addr);
 		ps->size++;
-		printf("Ìí¼Ó³É¹¦\n");
+		printf("æ·»åŠ æˆåŠŸ\n");
 }
 void ShowContact(const struct Contact* ps)
 {
 	if (ps->size==0)
 	{
-		printf("Í¨Ñ¶Â¼Îª¿Õ\n");
+		printf("é€šè®¯å½•ä¸ºç©º\n");
 	}
 	else
 	{
 		int i = 0;
-		printf("%-12s\t%-12s\t%-12s\t%-20s\t%-20s\n", "Ãû×Ö", "ÄêÁä", "ĞÔ±ğ", "µç»°", "µØÖ·");
+		printf("%-12s\t%-12s\t%-12s\t%-20s\t%-20s\n", "åå­—", "å¹´é¾„", "æ€§åˆ«", "ç”µè¯", "åœ°å€");
 		for ( i = 0; i < ps->size; i++)
 		{
 			printf("%-12s\t%-12d\t%-12s\t%-20s\t%-20s\n",
@@ -138,17 +138,17 @@ static int FindByName(const struct Contact* ps, char name[MAX_NAME])
 void DelContact(struct Contact* ps)
 {
 	char name[MAX_NAME];
-		printf("ÇëÊäÈëÒªÉ¾³ıÈËµÄÃû×Ö:>");
+		printf("è¯·è¾“å…¥è¦åˆ é™¤äººçš„åå­—:>");
 	scanf("%s", name);
-	//²éÕÒÒªÉ¾³ıµÄÈËÔÚÊ²Ã´Î»ÖÃ
-	//ÕÒµ½ÁË·µ»ØÃû×ÖËùÔÚÔªËØµÄÏÂ±ê
-	//ÕÒ²»µ½·µ»Ø -1
+	//æŸ¥æ‰¾è¦åˆ é™¤çš„äººåœ¨ä»€ä¹ˆä½ç½®
+	//æ‰¾åˆ°äº†è¿”å›åå­—æ‰€åœ¨å…ƒç´ çš„ä¸‹æ ‡
+	//æ‰¾ä¸åˆ°è¿”å› -1
 	int pos = FindByName(ps, name);
 	if (pos==-1)
 	{
-		printf("ÒªÉ¾³ıµÄÈË²»´æÔÚ\n");
+		printf("è¦åˆ é™¤çš„äººä¸å­˜åœ¨\n");
 	}
-	//É¾³ı
+	//åˆ é™¤
 	else
 	{
 		int j = 0;
@@ -157,22 +157,22 @@ void DelContact(struct Contact* ps)
 			ps->data[j] = ps->data[j + 1];
 		}
 		ps->size--;
-		printf("É¾³ı³É¹¦\n");
+		printf("åˆ é™¤æˆåŠŸ\n");
 	}
 }
 void SearchContact(struct Contact* ps)
 {
 	char name[MAX_NAME];
-	printf("ÇëÊäÈëÒª²éÕÒÈËµÄÃû×Ö:>");
+	printf("è¯·è¾“å…¥è¦æŸ¥æ‰¾äººçš„åå­—:>");
 	scanf("%s", name);
 	int pos = FindByName(ps, name);
 	if (pos==-1)
 	{
-		printf("Òª²éÕÒµÄÈË²»´æÔÚ\n");
+		printf("è¦æŸ¥æ‰¾çš„äººä¸å­˜åœ¨\n");
 	}
 	else
 	{
-		printf("%-12s\t%-12s\t%-12s\t%-20s\t%-20s\n", "Ãû×Ö", "ÄêÁä", "ĞÔ±ğ", "µç»°", "µØÖ·");
+		printf("%-12s\t%-12s\t%-12s\t%-20s\t%-20s\n", "åå­—", "å¹´é¾„", "æ€§åˆ«", "ç”µè¯", "åœ°å€");
 		printf("%-12s\t%-12d\t%-12s\t%-20s\t%-20s\n",
 			ps->data[pos].name,
 			ps->data[pos].age,
@@ -204,40 +204,75 @@ void Save(const struct Contact* ps)
 }
 int name_compare(const void* x, const void* y)
 {
-	char a = ((struct Contact*)x)->data->name;
-	char b = ((struct Contact*)x)->data->name;
+	char a = ((struct PeoInfo*)x)->name;
+	char b = ((struct PeoInfo*)x)->name;
 	return strcmp(a, b);
 }
 int age_compare(const void* x, const void* y)
 {
-	int a = ((struct Contact*)x)->data->age;
-	int b = ((struct Contact*)y)->data->age;
+	int a = ((struct PeoInfo*)x)->age;
+	int b = ((struct PeoInfo*)y)->age;
 	return a-b;
 }
-//void Sort(const struct Contact* ps,void* p)
-//{
-//	Ñ¡ÔñÅÅĞò·½Ê½
-//	int a = 0;
-//	do
-//	{
-//		printf("1.ĞÕÃû 2.ÄêÁä 0.È¡Ïû\n");
-//		printf("ÇëÑ¡ÔñÅÅĞò·½Ê½:>\n");
-//		scanf("%d", &a);
-//		switch (a)
-//		{
-//		case 1:
-//			ĞÕÃûÅÅĞò
-//			qsort(p, ps->size,stati(static_cast ((int)(ps + 1))) - (int)ps, name_compare);
-//			break;
-//		case 2:
-//			ÄêÁäÅÅĞò
-//			qsort(ps, ps->size, (int)(ps + 1) - (int)ps, age_compare);
-//			break;
-//		case 0:
-//			break;
-//		default:
-//			printf("Ñ¡Ôñ´íÎó£¬ÇëÖØĞÂÑ¡Ôñ¡£\n");
-//			break;
-//		}
-//	} while (a);
-//}
+#if 1
+void Sort(const struct Contact* ps)
+{
+	//é€‰æ‹©æ’åºæ–¹å¼
+		int a = 0;
+	do
+	{
+		printf("1.å§“å 2.å¹´é¾„ 0.å–æ¶ˆ\n");
+		printf("è¯·é€‰æ‹©æ’åºæ–¹å¼:>\n");
+		scanf("%d", &a);
+		switch (a)
+		{
+		case 1:
+			//å§“åæ’åº
+				qsort(ps->data, ps->size, sizeof(struct PeoInfo), name_compare);
+			break;
+		case 2:
+			//å¹´é¾„æ’åº
+				qsort(ps->data, ps->size, sizeof(struct PeoInfo), age_compare);
+			break;
+		case 0:
+			break;
+		default:
+			printf("é€‰æ‹©é”™è¯¯ï¼Œè¯·é‡æ–°é€‰æ‹©ã€‚\n");
+			break;
+		}
+	} while (a);
+}
+#endif // 0
+#if 0
+void swap(char* e1, char* e2, size_t width)
+{
+	int i = 0;
+	for (i = 0; i < width; i++)
+	{
+		char tmp = *e1;
+		*e1 = *e2;
+		*e2 = tmp;
+		e1++;
+		e2++;
+	}
+}
+
+
+void bubble(void* a, size_t num, size_t width, int(*cmp)(const void* a, const void* b))
+{
+	int i = 0;
+	for (i = 0; i < num - 1; i++)
+	{
+		int j = 0;
+		for (j = 0; j < num - 1 - i; j++)
+		{
+			if (cmp((char*)a + j * width, (char*)a + (j + 1) * width) > 0)
+			{
+				swap((char*)a + j * width, (char*)a + (j + 1) * width, width);
+			}
+		}
+
+	}
+}
+#endif // 0
+
