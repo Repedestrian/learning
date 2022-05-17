@@ -41,3 +41,6 @@ void Save( struct Contact* ps);
 void Load(struct Contact* ps);
 void ModifyContact(struct Contact* ps);
 void Destroy(struct Contact* ps);
+int age_compare(const void* x, const void* y);
+void bubble(void* a, size_t num, size_t width, int(*cmp)(const void* a, const void* b));
+void Sort(const struct Contact* ps);

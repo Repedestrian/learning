@@ -43,6 +43,9 @@ int main()
 			break;
 		case SORT:
 			//—°‘Ò≈≈–Ú∑Ω Ω
+			Sort(&con);
+			//printf("%d %d %p %p\n",con.size, sizeof(struct PeoInfo), con.data, con.data + 1);
+			//bubble(con.data, con.size, sizeof(struct PeoInfo), age_compare);
 			break;
 		case SAVE:
 			Save(&con);
